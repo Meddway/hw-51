@@ -12,36 +12,36 @@ const App = () => {
      };
   getRandomIntInclusive(5,36);
 
-  let i = 0;
-  while (i<6){
-    arrayNumber.push(getRandomIntInclusive(5,36));
-    i++
+  while (arrayNumber.length !== 5){
+
+    const randomNumber = getRandomIntInclusive(5,36);
+
+    if (!arrayNumber.includes(randomNumber)) {
+        arrayNumber.push(randomNumber);
+    }
   }
 
-  let newArrayNumber = arrayNumber;
-  newArrayNumber.sort(function(x,y) {
+  arrayNumber.sort(function(x,y) {
     return x-y
   });
 
-  let [numbers, setNumbers] = useState<number[]>([]);
+  const [numbers, setNumbers] = useState<number[]>([0,0,0,0,0]);
 
   const changeNumber = () =>{
-    setNumbers([])
+    setNumbers(arrayNumber)
   };
 
   return (
     <div className="App">
-      <Ball number={newArrayNumber[0]}>
+      <Ball number={numbers[0]}>
       </Ball>
-      <Ball number={newArrayNumber[1]}>
+      <Ball number={numbers[1]}>
       </Ball>
-      <Ball number={newArrayNumber[2]}>
+      <Ball number={numbers[2]}>
       </Ball>
-      <Ball number={newArrayNumber[3]}>
+      <Ball number={numbers[3]}>
       </Ball>
-      <Ball number={newArrayNumber[4]}>
-      </Ball>
-      <Ball number={newArrayNumber[5]}>
+      <Ball number={numbers[4]}>
       </Ball>
 
       <div>
